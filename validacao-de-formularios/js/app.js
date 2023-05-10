@@ -1,7 +1,7 @@
-import { valida } from "./validacao";
+import { valida } from "./validacao.js";
 
 //pegando todos os inputs do HTML 
-const inputs = document.querySelectorAll(input)
+const inputs = document.querySelectorAll('input')
 
 //para cada input, realize a função.
 inputs.forEach(input => {
@@ -10,3 +10,4 @@ inputs.forEach(input => {
     })
 
 })
+
