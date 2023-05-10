@@ -4,6 +4,18 @@ dataNascimento.addEventListener('blur', (evento) => {
     validaDataNascimento(evento.target)
 }) 
 
+export function valida(input) {
+    const tipoDeInput = input.dataset.tipo;
+
+    if(validadores[tipoDeInput]) {
+        validadores[tipoDeInput](input)
+    }
+}
+
+const validadores = {
+    dataNascimento:input => validaDataNascimento(input)
+}
+
 
 // Esta função tem o objetivo de, na hora que a pessoa tentar enviar a data de nascimento, validar ou não o que foi passado. Mostrando uma mensagem de erro ou apenas concluindo o cadastro.
 function validaDataNascimento(input) {
