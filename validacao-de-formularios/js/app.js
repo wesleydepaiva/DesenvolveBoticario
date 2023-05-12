@@ -1,13 +1,20 @@
-import { valida } from "./validacao.js";
+import { valida } from './validacao.js'
 
-//pegando todos os inputs do HTML 
 const inputs = document.querySelectorAll('input')
 
-//para cada input, realize a função.
 inputs.forEach(input => {
+    if(input.dataset.tipo === 'preco') {
+        SimpleMaskMoney.setMask(input, {
+            prefix: 'R$ ',
+            fixed: true,
+            fractionDigits: 2,
+            decimalSeparator: ',',
+            thousandsSeparator: '.',
+            cursor: 'end'
+        })
+    }
+
     input.addEventListener('blur', (evento) => {
         valida(evento.target)
     })
-
 })
-
