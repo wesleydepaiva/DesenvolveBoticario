@@ -1,6 +1,38 @@
-let consultaCEP = fetch('https://viacep.com.br/ws/01001000/json/')
+/*
+
+Esta forma utiliza muitos THEN e acaba acontecendo o CALLBACK HELL.
+
+//uso o FETCH para utilizar uma API
+let consultaCEP = fetch('https://viacep.com.br/ws/01001250/json/')
+//utilizo o THEN para tratar os dados, pois JSON parece com objeto.
 .then(resposta => resposta.json())
-.then(r => console.log(r))
+//Faço uma condicional para verificar se está correta a validação ou não.
+.then(r => {
+    if (r.erro) {
+        throw Error('Esse CEP não existe!')
+    } else 
+        console.log(r)
+    })
+//Este CATCH pega o erro jogado pelo THROW e mostra o resultado
 .catch(erro => console.log(erro));
 
-console.log(consultaCEP)
+*/
+
+async function buscaEndereco() {
+
+    try {
+        let consultaCEP = await fetch('https://viacep.com.br/ws/0100100/json/')
+        let consultaCEPConvertida = await consultaCEP.json()
+        console.log(consultaCEPConvertida)
+    } catch {
+        console.log(erro)
+    }
+    
+}
+
+buscaEndereco();
+
+
+
+
+
