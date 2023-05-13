@@ -1,14 +1,40 @@
 const http = new XMLHttpRequest();
+http.open('GET', 'http://localhost:3000/profile')
 
-// primeiro argumento é o que quero falar com servidor, e o segundo é o endereço para onde irei enviar
-//esse endereço é o arquivo com os dados dos clientes
-http.open('GET', 'http://localhost:3000/profile');
-
-//enviar nossa requisição
 http.send()
+//enviar nossa requisição
 
 //este .onload indica que ao carregar a página, acontecerá a instrução sinalizada na função anônima
 http.onload = () => {
-    const data = http.response
-    console.log(data)
+    const data = JSON.parse(http.response)
+    data.forEach(elemento => {
+        tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email))
+    })
+
+       
 }
+
+const criaNovaLinha = (nome, email) => {
+    const linhaNovoCliente = document.createElement('tr')
+    const conteudo = `
+        <td class="td" data-td>${nome}</td>
+                <td>${email}</td>
+                <td>
+                    <ul class="tabela__botoes-controle">
+                        <li><a href="../telas/edita_cliente.html" class="botao-simples botao-simples--editar">Editar</a></li>
+                        <li><button class="botao-simples botao-simples--excluir" type="button">Excluir</button></li>
+                    </ul>
+                </td> 
+                `
+
+    linhaNovoCliente.innerHTML = conteudo
+    return linhaNovoCliente;
+}
+
+const tabela = document.querySelector('[data-tabela]')
+
+tabela.appendChild(criaNovaLinha(nome, email) )
+
+
+
+
