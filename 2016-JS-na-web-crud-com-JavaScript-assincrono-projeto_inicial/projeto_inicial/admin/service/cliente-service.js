@@ -7,6 +7,7 @@ const listaClientes = () => {
 
 
 const criaCliente = (nome, email) => {
+    //fetch, porém agora como iremos enviar a informação, necessita de itens a mais, como o método, a informação que vai no header, a informação que irá no corpo (transformando-a em json) e retornando a resposta.
     return fetch(`http://localhost:3000/profile`, {
         method: 'POST',
         headers: {
@@ -23,10 +24,18 @@ const criaCliente = (nome, email) => {
 
 }
 
+//adicionando a função remover, e indicando o método 'DELETE' ao servidor
+const removeCliente = (id) => {
+    return fetch(`http://localhost:3000/profile/${id}`, {
+        method: 'DELETE',
 
+    })
+}
 
+//funções exportadas de uma vez só através dessa const
 export const clienteService = {
     listaClientes,
-    criaCliente
+    criaCliente,
+    removeCliente
 
 }

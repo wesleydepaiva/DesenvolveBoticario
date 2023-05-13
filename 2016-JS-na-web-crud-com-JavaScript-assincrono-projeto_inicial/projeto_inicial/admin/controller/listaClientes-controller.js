@@ -1,6 +1,6 @@
 import {clienteService} from '../service/cliente-service.js'
 
-const criaNovaLinha = (nome, email) => {
+const criaNovaLinha = (nome, email, id) => {
     const linhaNovoCliente = document.createElement('tr')
     const conteudo = `
         <td class="td" data-td>${nome}</td>
@@ -14,14 +14,30 @@ const criaNovaLinha = (nome, email) => {
                 `
 
     linhaNovoCliente.innerHTML = conteudo
+    linhaNovoCliente.dataset.id = id
+
     return linhaNovoCliente;
 }
 
 const tabela = document.querySelector('[data-tabela]')
 
 clienteService.listaClientes()
-.then( data => {
-            data.forEach(elemento => {
-            tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email))
-            })
+    .then( data => {
+                data.forEach(elemento => {
+                tabela.appendChild(criaNovaLinha(elemento.nome, elemento.email, elemento.id))
+                })
+})
+
+//utilizando a tabela para 'ouvir' o clique, e assim realizar a ação através de uma comparação. se o botao deletar for clicado, remova a linha do id.
+tabela.addEventListener('click', (evento) => {
+    let ehBotaoDeletar = evento.target.className === 'botao-simples botao-simples--excluir'
+
+    if(ehBotaoDeletar) {
+        const linhaCliente = evento.target.closest('[data-id')
+        let id = linhaCliente.dataset.id
+        clienteService.removeCliente(id)
+        .then(() => {
+            linhaCliente.remove()
+        })
+    }
 })
