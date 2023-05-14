@@ -5,14 +5,18 @@ import {clienteService} from '../service/cliente-service.js'
 const formulario = document.querySelector('[data-form]')
 
 //utilizando o addEventListener para interagir com o DOM, 'ouvindo' as ações e realizando algo.
-formulario.addEventListener('submit', (evento) => {
+formulario.addEventListener('submit', async (evento) => {
     //este método preventDefault previne contra o envio sem verificação
     evento.preventDefault()
     const nome = evento.target.querySelector('[data-nome]').value 
     const email = evento.target.querySelector('[data-email]').value 
 
-    clienteService.criaCliente(nome, email)
-    .then(() => {
+    try {
+        await clienteService.criaCliente(nome, email)
         window.location.href = '../telas/cadastro_concluido.html'
-    })
+    } catch(erro) {
+        console.log(erro)
+        window.location.href = '../telas/erro.html'
+    }
+    
 })
