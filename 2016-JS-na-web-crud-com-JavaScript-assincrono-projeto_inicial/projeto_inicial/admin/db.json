@@ -1,9 +1,19 @@
 {
   "profile": [
     {
-      "nome": "wesley",
+      "nome": "Wesley de Oliveira",
       "email": "wesley@wesley.com",
       "id": 1
+    },
+    {
+      "nome": "kevin",
+      "email": "kevin@kevin.com",
+      "id": 2
+    },
+    {
+      "nome": "Carlos Araújo",
+      "email": "carlos@araujo.com",
+      "id": 3
     }
   ]
 }
