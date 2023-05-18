@@ -1,0 +1,54 @@
+<meta charset="UTF-8">
+<canvas width="600" height="400"></canvas>
+
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+function desenhaRetangulo(x, y, largura, altura, cor) {
+    pincel.fillStyle = cor;
+    pincel.fillRect(x,y,largura,altura);
+    pincel.fill();
+}
+
+function desenhaCreeper() {
+    desenhaRetangulo(50, 50, 350, 300,'darkgreen');
+    desenhaRetangulo(100, 120, 90, 90, 'black');
+    desenhaRetangulo(260, 120, 90, 90, 'black');
+    desenhaRetangulo(190, 210, 70, 100, 'black');
+    desenhaRetangulo(150, 240, 40, 110, 'black');
+    desenhaRetangulo(260, 240, 40, 110, 'black');
+}
+
+function desenhaEnderman() {
+    desenhaRetangulo(50, 50, 350, 300,'black');
+    desenhaRetangulo(50, 150, 130, 40, '#dd8fdd');
+    desenhaRetangulo(90, 150, 40, 40, '#ca33e1');
+    desenhaRetangulo(270, 150, 130, 40, '#dd8fdd');
+    desenhaRetangulo(310, 150, 40, 40, '#ca33e1');
+}
+
+function limpaTela() {
+    pincel.clearRect(0,0,600,400);
+}
+
+var mostraCreeper = true;
+
+function trocaPersonagem() {
+    if (mostraCreeper) {
+        desenhaCreeper();
+    } else {
+        desenhaEnderman();
+    }
+    mostraCreeper = !mostraCreeper;
+}
+
+setInterval(trocaPersonagem, 3000)
+
+
+
+
+    
+</script>

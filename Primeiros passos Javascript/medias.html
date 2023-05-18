@@ -1,0 +1,46 @@
+<!--
+<script>
+
+    let alunos = ['Maria' , 'Eliane', 'Felipe', 'William', 'Kevin'];
+    let mediasDosAlunos = [6, 9, 7, 5, 10];
+
+    let listaDeNotasEAlunos = [alunos, mediasDosAlunos];
+
+    let exibeNomeNota = (nomeDoAluno) => {
+
+        if (listaDeNotasEAlunos[0].includes(nomeDoAluno)) {
+            let indice = listaDeNotasEAlunos[0].indexOf(nomeDoAluno)
+            return listaDeNotasEAlunos[0] [indice] + ', sua média é ' + listaDeNotasEAlunos[1] [indice] 
+        } else {
+            return "O(A) aluno(a) não está cadastrado(a)."
+        }
+
+    }
+
+    console.log(exibeNomeNota("Mariana"))
+    
+</script>
+-->
+
+<script>
+
+    let alunos = ['Maria' , 'Eliane', 'Felipe', 'William', 'Kevin'];
+    let mediasDosAlunos = [6, 9, 7, 5, 10];
+
+    let listaDeNotasEAlunos = [alunos, mediasDosAlunos];
+
+    let exibeNomeNota = (nomeDoAluno) => {
+
+        if (listaDeNotasEAlunos[0].includes(nomeDoAluno)) {
+
+            let indice = listaDeNotasEAlunos[0].indexOf(nomeDoAluno)
+
+            return listaDeNotasEAlunos[0] [indice] + ', sua média é ' + listaDeNotasEAlunos[1] [indice]
+             
+        } else {
+            return 'Aluno não cadastrado!'
+        }
+    }
+    
+    alert(exibeNomeNota(prompt('Insira qual aluno deseja verificar a média:')))
+</script>
